@@ -1,0 +1,303 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+	<title>Registration</title>
+
+<style>
+    body{
+		
+	margin:0px;
+	padding:0px;
+	
+    background-image: url("/image/v1r.jpg");
+    background-repeat: no-repeat; /* Prevent the background image from repeating */
+    background-position: 10% center;
+    overflow: hidden;
+    border-image-repeat: none;
+    
+
+}
+
+ul{
+	list-style-type:none;
+	background-color:rgb(0, 128, 255);
+	overflow:hidden;
+}
+li{
+	float:right;
+}
+li a{
+	padding:20px;
+	display:inline-block;
+	text-decoration:none;
+	color:black;
+	overflow: hidden;
+}
+li a:hover{
+	background-color:rgb(22, 119, 48  );
+	color:white;
+}
+.head{
+	margin-right:40%;
+	color:white;
+	float:right;
+	
+}
+.voteImg{
+	width:8%;
+	height:8%;
+	position:absolute;
+	top:5%;
+}
+
+
+
+.formoutline{
+	background-color: white;
+	width:60%;
+	height: 75%;
+	border-color:lightgreen;
+	position:relative;
+	top:2%;
+	left:20%;
+	border-radius: 2%;
+	background:transparent;
+	background-color: rgb(74, 72, 70  );
+
+}
+.Registration{
+	text-align: center;
+	position: relative;
+	top:4%;
+	font-size:30px;
+	color:white;
+
+}
+.form{
+	position: relative;
+	top:6%;
+	left:3%;
+}
+input{
+	margin-left:30px;
+	padding:15px;
+	margin-left:15%;
+	float:left; 
+	width:300px;
+	border-color:rgb(100, 244, 49 );
+	border-radius:5px;
+	border-width:.5px;
+	text-decoration: none;
+	cursor: pointer;
+	box-sizing: border-box;
+}
+.btn:hover{
+	background-color: rgb(217, 56, 0  );
+}
+.btn{
+	color:white;
+	background-color: rgb(215, 82, 36);
+	text-align: center;
+	position: relative;
+	margin-top: 5px;
+    margin-left: 195px;
+
+}
+td{
+	margin-top:0px;
+	padding:5px;
+}
+#date{
+	width: 10%;
+}
+tr td p input {
+	width:200px;
+
+}
+tr td h3 input{
+	position:relative;
+	right: 110px;
+	width:410px;
+
+}
+
+  ul{
+  list-style-type:none;
+  background-color:rgb(0, 128, 255);
+  overflow:hidden;
+}
+li{
+  float:right;
+}
+li a{
+  padding:25px;
+  display:inline-block;
+  text-decoration:none;
+  color:black;
+}
+li a:hover{
+  background-color:rgb(22, 119, 48  );
+  color:white;
+}
+.head{
+  margin-right:25%;
+  color:white;
+  float:right;
+  
+}
+.voteImg{
+  width:8%;
+  height:8%;
+  position:absolute;
+  top:5%;
+}
+input{
+  padding:13px;
+  margin-top:0px;
+}
+.alert{
+  background-color: red;
+  padding: 5px;
+  color: black;
+  margin: auto;
+  text-align: center;
+}
+
+
+.formoutline {
+    width: 30%; /* Adjust width as needed */
+    margin: auto; /* Remove default margin */
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: right;
+}
+
+
+
+
+
+
+
+.button-style {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-style:hover {
+  background-color: #45a049;
+}
+
+  </style>
+<body>
+
+     <ul>
+      <li><a class="active" th:href="@{/}"><strong>Home</strong></a></li>
+		  <!--<li><a th:href="@{/admin}"><strong>Admin Signin</strong></a></li>-->
+		  <li><a th:href="@{/about}"><strong>About</strong></a></li>
+    	<h3 class="head"><strong>Online Voting System</strong></h3>
+      <img  class ="voteImg "src="/image/vote.png" style="width:90px; height: 70px; position: absolute;top:3px;left: 13px;">
+    </ul> 
+   
+
+
+
+
+ 
+  <div class="formoutline">
+   	<h3 class ="Registration">Registration</h3>
+
+   	    <div class ="form">
+   		<form  th:action="@{/createuser}" method="post"  onsubmit="return validateForm()" enctype="multipart/form-data">
+
+   			<table>
+   				<tr ><td><input type = "text" name = "name" placeholder="Enter Your User Name" required></td></tr>
+                    <tr > <td><input type="text" name= "phone" placeholder="Enter Your Phone No"></td></tr>
+                    <tr><td><input type = "password" name= "password" placeholder="Enter Your Password" required></td></tr>
+                    <tr><td><input type="password" name="confirmpass" placeholder="Confirm password*" required=""></td></tr>
+   				<tr><td><input type = "text" name= "email" placeholder="Enter Your Email Id" required></td></tr>
+   				<tr><td><input type="text" name="adharcard" placeholder="Enter Your Aadhar Card Number" required></td></tr>
+                    <tr><td><input type="date" name="dob" id="dob" placeholder="Enter Your Date of Birth" required></td></tr>
+   				<tr><td><input type="file" name="photo" placeholder="Upload pic" accept="image/*" required></td></tr>
+                   <tr><td><input class="button-style" id="submitBtn" type="submit" value="Signup"></td></tr>
+                    
+   			</table>
+               
+   		</form>
+   		<div th:if="${session.msg}">
+                <p class="alert" th:text="${session.msg}"></p>
+            </div>
+      	</div>
+
+   	</div>
+<script>
+        function calculateAge(dob) {
+            var today = new Date();
+            var birthDate = new Date(dob);
+            var age = today.getFullYear() - birthDate.getFullYear();
+            var m = today.getMonth() - birthDate.getMonth();
+            if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            return age;
+        }
+
+        function validateForm() {
+			    var dobInput = document.getElementById("dob");
+			    var age = calculateAge(dobInput.value);
+			    var adharInput = document.getElementsByName("adharcard")[0];
+			    var phoneInput = document.getElementsByName("phone")[0];
+			    var passwordInput = document.getElementsByName("password")[0];
+			    var confirmPasswordInput = document.getElementsByName("confirmpass")[0];
+			    var photoInput = document.getElementsByName("photo")[0];
+			    var submitBtn = document.getElementById("submitBtn");
+			
+			    if (age < 18) {
+			        alert("You must be at least 18 years old to register.");
+			        return false; // Prevent form submission
+			    }
+			
+			    if (!/^[0-9]{12}$/.test(adharInput.value)) {
+			        alert("Aadhar card number should be 12 digits.");
+			        return false; // Prevent form submission
+			    }
+			
+			    if (!/^[0-9]{10}$/.test(phoneInput.value)) {
+			        alert("Phone number should be 10 digits.");
+			        return false; // Prevent form submission
+			    }
+			
+			    if (!/(?=.*[A-Z])(?=.*[a-z])(?=.*[^A-Za-z0-9])/.test(passwordInput.value)) {
+			        alert("Password must contain at least one uppercase letter, one lowercase letter, and one special character.");
+			        return false; // Prevent form submission
+			    }
+			
+			    if (passwordInput.value !== confirmPasswordInput.value) {
+			        alert("Password and confirm password do not match.");
+			        return false; // Prevent form submission
+			    }
+			
+			    // Check if a file is selected
+			    if (photoInput.files.length === 0) {
+			        alert("Please select a photo.");
+			        return false; // Prevent form submission
+			    }
+			
+			    // Check the size limit (e.g., 5MB in bytes)
+			    var maxSizeBytes = 5 * 1024 * 1024; // 5MB
+			    if (photoInput.files[0].size > maxSizeBytes) {
+			        alert("File size exceeds the limit. Maximum allowed size is 5MB.");
+			        return false; // Prevent form submission
+			    }
+			
+			    // All validation passed, allow form submission
+			    return true;
+			}
+
+    </script>
+</body>
+</html>

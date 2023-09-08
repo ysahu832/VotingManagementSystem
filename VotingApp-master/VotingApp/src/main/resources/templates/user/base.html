@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   <style>
+		
+				ul{
+						list-style-type:none;
+						background-color:rgb(0, 128, 255);
+						overflow:hidden;
+					}
+				li{
+					float:right;
+				}
+				li a{
+					padding:20px;
+					display:inline-block;
+					text-decoration:none;
+					color:black;
+				}
+				li a:hover{
+					background-color:rgb(32, 55, 227);
+					color:white;
+				}
+	</style>
+	
+	<link rel="stylesheet" th:href="@{/css/style.css}" />
+	<link rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+
+    <title th:text="${title}">Title</title>
+  </head>
+  <body> 
+   <!-- Navbar -->
+
+  <ul>
+  <li><a class="active" th:href="@{/user/}"><strong>Home</strong></a></li>
+   <li><a><strong>Welcome <span th:text="${user.name}"></span></strong></a></li>
+  <li><a th:href="@{/logout}"><strong>Logout</strong></a></li>
+</ul>
+
+    <!-- Navbar End -->
+    
+  
+   
+  
+    <div th:replace="${content}">
+    
+    </div>
+	
+	  </div>
+	
+   
+    
+  
+  
+  
+ 
+    
+  </body>
+</html>

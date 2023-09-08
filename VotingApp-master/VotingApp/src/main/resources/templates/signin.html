@@ -1,0 +1,126 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<title>Admin</title>
+<style>
+	
+	body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+h1 {
+    margin-top: 0;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+div[style="color:red"] {
+    color: red;
+    margin-top: 10px;
+}
+
+div[style="color:firebrick"] {
+    color: firebrick;
+    margin-top: 20px;
+}
+ul{
+  list-style-type:none;
+  background-color:rgb(0, 128, 255);
+  overflow:hidden;
+}
+li{
+  float:right;
+}
+li a{
+  padding:25px;
+  display:inline-block;
+  text-decoration:none;
+  color:black;
+}
+li a:hover{
+  background-color:rgb(22, 119, 48  );
+  color:white;
+}
+tr td h3 input{
+	position:relative;
+	right: 110px;
+	width:410px;
+
+}
+	
+</style>
+<body>
+
+    <ul>
+        <li><a class="active" th:href="@{/}"><strong>Home</strong></a></li>
+            <li><a th:href="@{/admin}"><strong>Admin Signin</strong></a></li>
+            <li><a th:href="@{/about}"><strong>About</strong></a></li>
+          <h3 class="head"><strong>Admin</strong></h3>
+       
+      </ul> 
+	<section class = "center">
+	
+<form th:action = "@{/dologin}" method = "post">
+
+<h1>Signin</h1>
+		
+		<div th:if="${param.error}" style="color:red">
+          Invalid username and password <br><br>
+        </div>
+                            
+         <div th:if="${param.logout}" style="color:red">
+           You have been logged out <br><br>
+          </div>
+                            
+   		
+
+<input type = "text" name = "username" placeholder="Enter Your  Id" required><br><br>
+
+<input type = "password" name= "password" placeholder="Enter Your Password" required><br><br>
+
+<input type = "submit" value="Signin">
+
+</form>
+
+<br>
+
+</div>
+
+	<br>	
+	</section>
+</body>
+</html>

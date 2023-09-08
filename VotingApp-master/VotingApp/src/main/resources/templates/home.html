@@ -1,0 +1,208 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<title>Login</title>
+
+
+<style>
+body{
+	margin:0px;
+    padding:0px;
+    background-image: url("/image/w2.png");
+    background-repeat: no-repeat; /* Prevent the background image from repeating */
+    background-position: 10% center;
+    overflow: hidden;
+    border-image-repeat: none;
+}
+
+ul{
+	list-style-type:none;
+	background-color:rgb(0, 128, 255);
+	overflow:hidden;
+}
+li{
+	float:right;
+}
+li a{
+	padding:20px;
+	display:inline-block;
+	text-decoration:none;
+	color:black;
+}
+li a:hover{
+	background-color:rgb(32, 55, 227);
+	color:white;
+}
+.head{
+	margin-right:35%;
+	color:white;
+	float:right;
+	
+}
+.voteImg{
+	width:8%;
+	height:8%;
+	position:absolute;
+	top:5%;
+}
+
+.login_icon{
+	width:20%;
+	height: 13%;
+	border-radius: 50%;
+	margin-left:40%;
+	margin-top: 4%;
+
+}
+.login_formate{
+	width:25%;
+	height:75%;
+	position:relative;
+	top:5%;
+	left: 70%;
+	background-color: rgb(91, 86, 88  );
+	border-radius: 5%;
+}
+input{
+	padding:10px;
+	margin: 5px;
+	border-radius: 5px;
+	
+}
+.form{
+	margin-left:17%;
+
+
+}
+#login{
+	margin-left: 20%;
+	color:white;
+}
+
+
+ .register{
+	
+	width:110px;
+	color:white;
+	background-color: rgb(49, 55, 52  );
+}
+.register:hover{
+	background-color: rgb(7,7,7);
+	cursor: pointer;
+	
+}
+.google{
+	
+	width:190px;
+	background-color: rgb(215, 82, 36);
+}
+.google:hover{
+    background-color: rgb(217, 56, 0);	
+    cursor: pointer;
+}
+.logintbn:hover{
+    background-color: rgb(14, 173, 255);
+    cursor:pointer;	
+}
+.loginbtn{
+	background-color:rgb(14, 73, 151 ); color:white ; width:70px;
+	cursor: pointer;
+}
+.votearea{
+	position: absolute;
+	top:17%;
+	left:5%;
+	width: 50%;
+	height: 70%;
+
+	
+
+}
+.box1{
+	background-color: white;
+	width: 40%;
+	height: 40%;
+	display: block;
+	float:left;
+	margin-left:30px;
+	margin-top: 20px;
+	clear: both;
+	border-radius:10px;
+
+}
+.box2{
+	background-color: white;
+	width: 40%;
+	height: 40%;
+	display: block;
+	float:right;
+	margin-right: 70px;
+	margin-top: 20px;
+	border-radius:10px;
+
+
+}
+.box3{
+	background-color: white;
+	width: 40%;
+	height: 40%;
+	display: block;
+	float:left;
+	clear: both;
+	margin-left: 30px;
+	margin-top: 25px;
+	border-radius:10px;
+}
+.box4{
+	background-color: white;
+	width: 40%;
+	height: 40%;
+	display: block;
+	float:right;
+	margin-right: 70px;
+	margin-top: 25px;
+	border-radius:10px;
+}
+
+.a{
+	margin:auto;
+}
+.alert{
+	color:red;
+}
+
+</style>
+<body>
+
+    <ul>
+		<li><a class="active" th:href="@{/}"><strong>Home</strong></a></li>
+		  <!--<li><a th:href="@{/admin}"><strong>Admin Signin</strong></a></li>-->
+		  <li><a th:href="@{/about}"><strong>About</strong></a></li>
+    	<h3 class="head"><strong>Online Voting System</strong></h3>
+    	<img  class ="voteImg "src="/image/vote.png" style="width:90px; height: 70px; position: absolute;top:3px;left: 13px;">
+    	<!--<img  class ="voteImg "src="vote1.png" style="width:100px; height: 50px; position: absolute;top:6px;left: 13px;">-->
+    </ul>	
+   
+<div th:if="${errorMessage}" class="alert alert-danger">
+        <p th:text="${errorMessage}"></p>
+    </div>
+	<div class="login_formate">
+		<img class="login_icon" th:src="@{/image/p.jpeg}" >
+		<form class="form" th:action = "@{/dologin}" method = "post">
+			<table>
+				<h3 id="login">Login</h3>
+                        <tr><td><input type = "text" name = "username" placeholder="Enter Your Email Id" required></td></tr><br>
+                        <tr><td><input type = "password" name= "password" placeholder="Enter Your Password" required></td></tr>
+                        <tr><td ><p><input type = "submit" class="loginbtn"value="Signin"></p></td></tr>
+
+			</table>
+			
+		</form>
+	         <table class="a">
+	         	<!--<tr><td><input class="google" type="submit" value ="Sign In with Google"> </td></tr>-->
+			<tr><td><h3 style="color: yellow;">New user: <a th:href="@{/register}" class="register-button"><strong style="color: blue;">Register</strong></a></h3></td></tr>
+		</table>
+
+	   
+	</div></body>
+	
+    </html>>
